@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-Time Chat App</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="chat-container">
+      <h2>Real-Time Chat</h2>
+      <div class="chat-box">
+        <div class="message" v-for="msg in messages" :key="msg.time">
+          <span class="user">{{ msg.user }}:</span> {{ msg.text }}
+        </div>
+      </div>
+      <div class="input-area">
+        <input type="text" v-model="message" @keyup.enter="sendMessage" placeholder="Type a message..." />
+        <button @click="sendMessage">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Inject Vue WebSocket client from /app.js -->
+  <script src="/app.js"></script>
+</body>
+</html>
